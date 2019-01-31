@@ -1,0 +1,29 @@
+<h1>Curiosity Images</h1>
+<a routerLink="user/photos">View Your Saved Photos</a>
+
+<form>
+  <div class="form-group">
+    <label for="camera">Date</label>
+    <input type=date #roverDate>
+  </div>
+  <div class="form-group">
+    <label for="camera">Camera</label>
+    <select #roverCamera>
+      <option value="FHAZ">Front Hazard Avoidance Camera</option>
+      <option  value="RHAZ">Rear Hazard Avoidance Camera</option>
+      <option value="MAST">Mast Camera</option>
+      <option  value="CHEMCAM">Chemistry and Camera Complex</option>
+      <option  value="MAHLI">Mars Hand Lens Imager</option>
+    </select>
+  </div>
+    <button (click)="getRoverImages(roverDate.value, roverCamera.value)">View Images</button>
+    <button (click)="saveRoverImages(roverDate.value, roverCamera.value)">Save All Images</button>
+  </form>
+
+<div *ngIf="photos">
+  <app-photos-list [childPhotos]="photos"></app-photos-list>
+</div>
+
+<div *ngIf="photos===null">
+  <h3>There were no damn photos taken on {{roverDate.value}} by the {{roverCamera.value}} camera.</h3>
+</div>

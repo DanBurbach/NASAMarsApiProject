@@ -1,0 +1,8 @@
+<a routerLink=''>Back to Search Page</a>
+
+<h1>Your Saved Photos:</h1>
+<div *ngFor="let photo of savedPhotos | async">
+  <img src = {{photo.imageURL}} class=”photo”><br>
+  <p>{{photo.date}} | {{photo.camera}}</p>
+  <button (click)="deletePhoto(photo)">Delete Photo</button>
+</div>
